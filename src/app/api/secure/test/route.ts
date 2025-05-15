@@ -1,9 +1,8 @@
-import { NextResponse } from "next/server";
-
-export async function GET(){
-
-    return NextResponse.json({
-        success:true,
-        message:"Endpoint test true"
-    })
+export async function GET() {
+  return new Response('pong', {
+    status: 200,
+    headers: {
+      'Content-Type': 'text/plain',
+    },
+  });
 }
