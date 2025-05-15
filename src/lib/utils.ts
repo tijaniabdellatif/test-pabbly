@@ -13,14 +13,8 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
-// src/lib/utils.ts
-// ...existing code...
-
-/**
- * Safely send a request to Pabbly webhook
- */
 export async function notifyPabbly(submissionId: string) {
-  const webhookUrl = process.env.PABBLY_WEBHOOK_URL;
+  const webhookUrl = WEBHOOK_URL;
   
   if (!webhookUrl) {
     throw new Error('Pabbly webhook URL is not configured');

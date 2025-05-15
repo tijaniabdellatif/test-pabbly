@@ -1,14 +1,21 @@
-// src/app/api/secure-endpoint/[submissionId]/route.ts
+// src/app/api/secure/[submissionId]/route.ts
 import { NextRequest, NextResponse } from 'next/server';
-import prisma  from '../../../../server/db/prisma';
+import  prisma  from '@/server/db/prisma';
 import { ApiResponse } from '@/types';
 
 // Use the hardcoded token for simplicity
 const API_TOKEN = process.env.API_TOKEN || 'pabbly_api_token_12345';
 
+// Fix the type definition for params
+type RouteParams = {
+  params: {
+    submissionId: string;
+  };
+};
+
 export async function GET(
   request: NextRequest,
-  { params }: { params: { submissionId: string } }
+  { params }: RouteParams
 ) {
   try {
     // Verify authentication token
