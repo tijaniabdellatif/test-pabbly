@@ -1,21 +1,15 @@
 // src/app/api/secure/[submissionId]/route.ts
 import { NextRequest, NextResponse } from 'next/server';
-import  prisma  from '@/server/db/prisma';
+import prisma from '@/server/db/prisma';
 import { ApiResponse } from '@/types';
 
 // Use the hardcoded token for simplicity
 const API_TOKEN = process.env.API_TOKEN || 'pabbly_api_token_12345';
 
-// Fix the type definition for params
-type RouteParams = {
-  params: {
-    submissionId: string;
-  };
-};
-
+// Next.js App Router expects this specific structure for the params
 export async function GET(
   request: NextRequest,
-  { params }: RouteParams
+  { params }: { params: { submissionId: string } }
 ) {
   try {
     // Verify authentication token
